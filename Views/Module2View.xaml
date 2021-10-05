@@ -1,0 +1,98 @@
+﻿<Window x:Class="MathModMudules.Views.Module2View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathModMudules.Views" xmlns:VM="clr-namespace:MathModMudules.Logic"
+        mc:Ignorable="d"
+        Title="Module2View" Height="450" Width="800">
+
+    <Window.DataContext>
+        <VM:Module3/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="5 0">
+            <TextBlock Text="Количество сырья на складе" TextAlignment="Center" Margin="0 10"/>
+
+            <TextBlock Text="Мука 1 Сорта"/>
+            <TextBox Text="{Binding Flour11}"/>
+
+            <TextBlock Text="Мука 2 Сорта"/>
+            <TextBox Text="{Binding Flour21}"/>
+
+            <TextBlock Text="Яичный порошок"/>
+            <TextBox Text="{Binding EggPowder1}"/>
+
+            <Separator Margin="0 10"/>
+            <TextBlock Text="Цена Баранок Яичных"/>
+            <TextBox Text="{Binding SellPriceProdA1}"/>
+
+            <TextBlock Text="Цена Баранок Солнечных"/>
+            <TextBox Text="{Binding SellPriceProdB1}"/>
+        </StackPanel>
+
+        <StackPanel Margin="5 0" Grid.Column="1">
+            <TextBlock Text="Затраты сырья на баранки Яичные" TextAlignment="Center" Margin="0 10"/>
+
+            <TextBlock Text="Мука 1 Сорта"/>
+            <TextBox Text="{Binding AProductFlour11}"/>
+
+            <TextBlock Text="Мука 2 Сорта"/>
+            <TextBox Text="{Binding AProductFlour21}"/>
+
+            <TextBlock Text="Яичный порошок"/>
+            <TextBox Text="{Binding AProductEggPowder1}"/>
+
+        </StackPanel>
+
+        <StackPanel Margin="5 0" Grid.Column="2">
+            <TextBlock Text="Затраты сырья на баранки Солнечные" TextAlignment="Center" Margin="0 10"/>
+
+            <TextBlock Text="Мука 1 Сорта"/>
+            <TextBox Text="{Binding BProductFlour11}"/>
+
+            <TextBlock Text="Мука 2 Сорта"/>
+            <TextBox Text="{Binding BProductFlour21}"/>
+
+            <TextBlock Text="Яичный порошок"/>
+            <TextBox Text="{Binding BProductEggPowder1}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Прибыль"/>
+            <TextBlock Text="{Binding TotalSellPrice1}"/>
+
+            <TextBlock Text="Яичные"/>
+            <TextBlock Text="{Binding TotalA1}"/>
+
+            <TextBlock Text="Солнечные"/>
+            <TextBlock Text="{Binding TotalB1}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Остаток Муки первого сорта"/>
+            <TextBlock Text="{Binding Flour1Left1}"/>
+
+            <TextBlock Text="Остаток Муки второго сорта"/>
+            <TextBlock Text="{Binding Flour2Left1}"/>
+
+            <TextBlock Text="Остаток яичного порошка"/>
+            <TextBlock Text="{Binding EggPowderLeft1}"/>
+        </StackPanel>
+
+        <Button Grid.Column="2" Grid.Row="1" Content="По    считать" Command="{Binding RelayCommand}"/>
+
+    </Grid>
+</Window>
