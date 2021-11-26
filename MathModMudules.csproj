@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Logic\BasicVM.cs" />
     <Compile Include="Logic\Module1.cs" />
+    <Compile Include="Logic\Module2.cs" />
     <Compile Include="Logic\Module3.cs" />
     <Compile Include="Logic\RelayCommand.cs" />
     <Compile Include="UCS\AboutUC.xaml.cs">

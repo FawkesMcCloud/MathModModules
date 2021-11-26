@@ -26,6 +26,7 @@ namespace MathModMudules
         public MainWindow()
         {
             InitializeComponent();
+            Logic.Test.startTest();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
