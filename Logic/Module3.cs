@@ -83,24 +83,24 @@ namespace MathModMudules.Logic
             bool optimal = false;
             while (!optimal)
             {
+                List<Point> points = new List<Point>();
                 var potentialC = new float?[maxJ];
                 var potentialM = new float?[maxI];
                 potentialM[0] = 0.0f;
 
                 for (int i = 0; i < potentialM.Length; i++)
                     for (int j = 0; j < potentialC.Length; j++)
-                        if (shippingMatrix[i, j] != 0)
+                        if (tempMatrix[i, j] != 0)
                         {
                             if (potentialM[i] != null && potentialC[j] == null)
                                 potentialC[j] = costMatrix[i, j] - potentialM[i];
 
                             if (potentialC[j] != null && potentialM[i] == null)
                                 potentialM[i] = costMatrix[i, j] - potentialC[j];
+                            points.Add(new Point(i, j));
                         }
-
                 // Поиск максимального нарушения (по модулю)
-
-                int minDeltaI, minDeltaJ;
+                int minDeltaI = -1, minDeltaJ = -1;
                 float minDelta = 0.0f;
                 for (int i = 0; i < potentialM.Length; i++)
                     for (int j = 0; j < potentialC.Length; j++)
@@ -114,13 +114,32 @@ namespace MathModMudules.Logic
                         }
                     }
                 minDelta = Math.Abs(minDelta);
+
                 // СМОТРИ ПО СТОЛБЦУ И СТРОКЕ ПАРЫ +-
+                points.Add(new Point(minDeltaI, minDeltaJ));
 
-
-
+                LinkedList<Point> cycle = new LinkedList<Point>();
+                bool left = true;
+                while(left){
+                    var rows = points.FindAll(p => points.Count(g => g.i == p.i) == 1);
+                    var cols = points.FindAll(p => points.Count(g => g.j == p.j) == 1);
+                    points.RemoveAll(p => rows.Contains(p) || cols.Contains(p));
+                    left = rows.Count != 0 || cols.Count != 0;
+                }
 
             }
 
+        }
+
+        class Point
+        {
+            public int i, j;
+            public bool sign;
+            public Point(int i, int j)
+            {
+                this.i = i;
+                this.j = j;
+            }
         }
     }
 
