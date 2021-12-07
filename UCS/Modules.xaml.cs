@@ -37,5 +37,17 @@ namespace MathModMudules.UCS
             Window module3 = new Module2View();
             module3.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window module3 = new Module3View();
+            module3.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Window module4 = new Module4View();
+            module4.ShowDialog();
+        }
     }
 }

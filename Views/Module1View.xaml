@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathModMudules.Views" xmlns:VM="clr-namespace:MathModMudules.Logic"
         mc:Ignorable="d"
-        Title="Module1View" Height="450" Width="800">
+        Title="Метод подбора" Height="450" Width="800">
 
     <Window.DataContext>
         <VM:Module1/>

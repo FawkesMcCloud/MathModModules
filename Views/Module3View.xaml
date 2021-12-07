@@ -1,0 +1,64 @@
+﻿<Window x:Class="MathModMudules.Views.Module3View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathModMudules.Views" xmlns:VM="clr-namespace:MathModMudules.Logic"
+        mc:Ignorable="d"
+        Title="Транспортная задача" Height="450" Width="800">
+    <Window.DataContext>
+        <VM:Module3/>
+    </Window.DataContext>
+
+    <StackPanel>
+        <DockPanel LastChildFill="False">
+            <TextBlock Text="Склады:" Width="100"/>
+            <TextBox Width="50" Text="{Binding Manufacturers0}"/>
+            <TextBox Width="50" Text="{Binding Manufacturers1}"/>
+            <TextBox Width="50" Text="{Binding Manufacturers2}"/>
+            <TextBox Width="50" Text="{Binding Manufacturers3}"/>
+            <TextBlock Width="55"/>
+            <TextBlock Width="100" HorizontalAlignment="Center" Text="{Binding TotalManufcaturer}"/>
+        </DockPanel>
+        <DockPanel LastChildFill="False" >
+            <TextBlock Text="Получатели:" Width="100"/>
+            <TextBox Width="50" Text="{Binding Consumers0}"/>
+            <TextBox Width="50" Text="{Binding Consumers1}"/>
+            <TextBox Width="50" Text="{Binding Consumers2}"/>
+            <TextBox Width="50" Text="{Binding Consumers3}"/>
+            <TextBox Width="55" Text="{Binding Consumers4}"/>
+            <TextBlock Width="100" HorizontalAlignment="Center" Text="{Binding TotalConsumer}"/>
+        </DockPanel>
+        <DockPanel LastChildFill="False" HorizontalAlignment="Center" Margin="0 5">
+            <DataGrid ItemsSource="{Binding ListCost}" AutoGenerateColumns="False" Margin="0 0 20 0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Продсиб" Binding="{Binding Consumer1}"/>
+                    <DataGridTextColumn Header="Ашан" Binding="{Binding Consumer2}"/>
+                    <DataGridTextColumn Header="Ярче" Binding="{Binding Consumer3}"/>
+                    <DataGridTextColumn Header="ФСИН" Binding="{Binding Consumer4}"/>
+                    <DataGridTextColumn Header="ВКИ" Binding="{Binding Consumer5}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid ItemsSource="{Binding ListShipping}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Продсиб" Binding="{Binding Consumer1}"/>
+                    <DataGridTextColumn Header="Ашан" Binding="{Binding Consumer2}"/>
+                    <DataGridTextColumn Header="Ярче" Binding="{Binding Consumer3}"/>
+                    <DataGridTextColumn Header="ФСИН" Binding="{Binding Consumer4}"/>
+                    <DataGridTextColumn Header="ВКИ" Binding="{Binding Consumer5}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <DockPanel LastChildFill="False" HorizontalAlignment="Center">
+            <TextBlock Text="Цена всех перевозок: "/>
+            <TextBlock Text="{Binding Cost}"/>
+        </DockPanel>
+        
+
+        <DockPanel LastChildFill="False" HorizontalAlignment="Center">
+            <Button Content="Посчитать Северо-западным" Margin="5 0" Command="{Binding ButtonFindFirst}"/>
+            <Button Content="Посчитать Оптимально" Margin="5 0"  Command="{Binding ButtonFindOptimal}"/>
+        </DockPanel>
+    </StackPanel>
+</Window>
